@@ -5,9 +5,7 @@ import 'package:flutter_cubit_1/screens/home.dart';
 import 'package:get/get.dart';
 
 void main() {
-  runApp(
-    MyApp(),
-  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -18,15 +16,25 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      home: BlocProvider(
-        create: (context) => CountercubitCubit(),
-        child: Home(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<CountercubitCubit>(
+          create: (context) => CountercubitCubit(),
+        ),
+        BlocProvider<ColorCubit>(
+          create: (context) => ColorCubit(),
+        ),
+      ],
+      child: MaterialApp(
+        home: Home(),
+        title: "FAM Cubit Training",
+        debugShowCheckedModeBanner: false,
+        // defaultTransition: Transition.cupertino,
+        theme: ThemeData(
+            pageTransitionsTheme: PageTransitionsTheme(builders: {
+          TargetPlatform.android: CupertinoPageTransitionsBuilder()
+        })),
       ),
-      // home: Home(),
-      title: "FAM Cubit Training",
-      debugShowCheckedModeBanner: false,
-      // defaultTransition: Transition.cupertino,
     );
   }
 }

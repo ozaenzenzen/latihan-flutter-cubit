@@ -13,91 +13,89 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CountercubitCubit, CountercubitState>(
-      builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text("FAM Training Cubit 1"),
-            backgroundColor: Colors.pink[900],
-          ),
-          body: Container(
-            // alignment: Alignment.center,
-            child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("FAM Training Cubit 1"),
+        backgroundColor: Colors.pink[900],
+      ),
+      body: Container(
+        // alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+              onPressed: () {
+                Get.to(() => SecondPage());
+              },
+              child: Text("To Another Page"),
+            ),
+            BlocBuilder<CountercubitCubit, int>(
+              builder: (context, state) {
+                return Text(
+                  state.toString(),
+                  style: GoogleFonts.lato(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                  ),
+                );
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextButton(
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.pink[900],
+                  ),
                   onPressed: () {
-                    Get.to(() => SecondPage());
+                    context.read<CountercubitCubit>().increment();
                   },
-                  child: Text("To Another Page"),
-                ),
-                BlocBuilder<CountercubitCubit, CountercubitState>(
-                  builder: (context, state) {
-                    return Text(
-                      "- ${state.value}",
-                      style: GoogleFonts.lato(
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold,
+                  child: SizedBox(
+                    height: 60,
+                    width: 100,
+                    child: Center(
+                      child: Text(
+                        "+",
+                        style: GoogleFonts.lato(
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    );
-                  },
+                    ),
+                  ),
                 ),
                 SizedBox(
-                  height: 20,
+                  width: 10,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.pink[900],
-                      ),
-                      onPressed: () {                        
-                        context.bloc<CountercubitCubit>().cubitIncement();
-                      },
-                      child: SizedBox(
-                        height: 60,
-                        width: 100,
-                        child: Center(
-                          child: Text(
-                            "+",
-                            style: GoogleFonts.lato(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.pink[900],
+                  ),
+                  onPressed: () {
+                    context.read<CountercubitCubit>().decrement();
+                  },
+                  child: SizedBox(
+                    height: 60,
+                    width: 100,
+                    child: Center(
+                      child: Text(
+                        "-",
+                        style: GoogleFonts.lato(
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.pink[900],
-                      ),
-                      onPressed: () {},
-                      child: SizedBox(
-                        height: 60,
-                        width: 100,
-                        child: Center(
-                          child: Text(
-                            "-",
-                            style: GoogleFonts.lato(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
-          ),
-        );
-      },
+          ],
+        ),
+      ),
     );
   }
 }

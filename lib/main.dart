@@ -19,11 +19,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      // home: BlocProvider(
-      //   create: (context) => CountercubitCubit(),
-      //   child: Home(),
-      // ),
-      home: Home(),
+      home: BlocProvider(
+        create: (context) => CountercubitCubit(),
+        child: Home(),
+      ),
+      // home: Home(),
       title: "FAM Cubit Training",
       debugShowCheckedModeBanner: false,
       // defaultTransition: Transition.cupertino,

@@ -3,7 +3,7 @@ import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
-part 'countercubit_state.dart';
+part 'action_state.dart';
 
 // class CountercubitCubit extends Cubit{
 // class CountercubitCubit extends Cubit<CountercubitState> {

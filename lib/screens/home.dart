@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_cubit_1/cubit/countercubit_cubit.dart';
+import 'package:flutter_cubit_1/cubit/action_cubit.dart';
 import 'package:flutter_cubit_1/screens/secondpage.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,7 +29,10 @@ class _HomeState extends State<Home> {
               children: [
                 TextButton(
                   onPressed: () {
-                    // Get.to(() => SecondPage());
+                    // Get.to(
+                    //   () => SecondPage(),
+                    //   transition: Transition.cupertino,
+                    // );
                     Navigator.push(
                       context,
                       CupertinoPageRoute(
@@ -37,7 +40,7 @@ class _HomeState extends State<Home> {
                       ),
                     );
                   },
-                  child: Text("To Another Page"),
+                  child: Text("Change Color here"),
                 ),
                 BlocBuilder<CountercubitCubit, int>(
                   builder: (context, state) {

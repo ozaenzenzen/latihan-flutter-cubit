@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_cubit_1/cubit/countercubit_cubit.dart';
+import 'package:flutter_cubit_1/cubit/action_cubit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SecondPage extends StatefulWidget {
@@ -15,7 +15,7 @@ class _SecondPageState extends State<SecondPage> {
       builder: (context, color) {
         return Scaffold(
             appBar: AppBar(
-              title: Text("Second Page"),
+              title: Text("Color Management Page"),
               backgroundColor: color,
               // backgroundColor: Colors.pink[900],
             ),
